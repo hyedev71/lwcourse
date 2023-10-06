@@ -23,7 +23,6 @@
     </head>
 
     <body class="bg-gray-100 py-3 px-3">
-
 		<div class="flex items-center justify-center">
 			<livewire:user-list />
 		</div>

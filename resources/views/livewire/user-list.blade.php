@@ -24,7 +24,7 @@
 			<tbody>
 				@if ( (!empty($users)) AND !$users->isEmpty() )
 					@foreach ($users as $user)
-						<tr class="bg-white text-lg">
+						<tr wire:key="{{ $user->id }}" class="bg-white text-lg">
 							<th scope="row" class="border border-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 								{{ $user->name }}
 							</th>
@@ -32,7 +32,7 @@
 								{{ $user->email }}
 							</td>
 							<td class="border border-2 px-6 py-4 text-center">
-								<button type="button" class="text-base px-3 py-1.5 font-medium text-white bg-blue-500 hover:bg-blue-700 border rounded-xl">
+								<button wire:click="viewUser({{ $user }})" type="button" class="text-base px-3 py-1.5 font-medium text-white bg-blue-500 hover:bg-blue-700 border rounded-xl">
 									Edit
 								</button>
 							</td>
@@ -45,6 +45,16 @@
 		<div class="w-full shadow pt-3">
 			{{ $users->links() }}
 		</div>
+
+		@if ($selectedUser)
+			<x-modal name="user-details" title="View User">
+				<x-slot:body>
+					Name: {{ $selectedUser->name }}
+					<br>
+					Email: {{ $selectedUser->email }}
+				</x-slot:body>
+			</x-modal>
+		@endif
 
 	</div>
 
