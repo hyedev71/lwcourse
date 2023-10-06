@@ -5,13 +5,15 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\User;
 use Livewire\WithPagination;
-//use Livewire\Attributes\On;
-//use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 
 class UserList extends Component
 {
 	use WithPagination;
 
+	#[Url(as : 's', history : true, keep : true)]
 	public $search;
 
 	public $selectedUser;
