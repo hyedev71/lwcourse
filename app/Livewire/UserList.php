@@ -20,7 +20,8 @@ class UserList extends Component
 
     public function mount()
     {
-        $this->selectedUser = null; // Initialize the modal state
+		$this->search = '';
+        $this->selectedUser = ""; // Initialize the modal state
     }
 
 	public function viewUser(User $user)	
